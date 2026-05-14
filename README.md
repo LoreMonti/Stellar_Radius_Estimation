@@ -12,6 +12,12 @@ This project provides a fully reproducible framework that integrates broadband p
 
 ---
 
+## Input Data
+
+The pipeline reads the stellar catalogue from `Data/Data.csv`, containing multi-band photometry, Gaia parallaxes, effective temperatures, and external reference radii. Precomputed bolometric-correction samples are provided by `Data/output.file.all` and are used to propagate model uncertainties in the infrared Monte Carlo analysis.
+
+---
+
 ## Objectives
 
 The main goals of the project are to:
@@ -106,7 +112,7 @@ This approach provides a statistically rigorous estimate that naturally incorpor
 
 ## Statistical Validation
 
-The estimated radius is compared with an external reference radius (R_A) using a Z-score:
+The estimated radius is compared with an external reference radius ($$R_A$$) using a Z-score:
 
 $$
 Z = \frac{R_{\mathrm{IR}} - R_A}{\sqrt{\sigma_{\mathrm{IR}}^2 + \sigma_A^2}}
