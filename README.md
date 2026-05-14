@@ -149,7 +149,7 @@ These results demonstrate that the infrared Monte Carlo approach substantially i
 
 ### Final Catalogue
 
-* `Result/Radius.csv`
+* `Results/Radius.csv`
 
 Contains:
 
@@ -162,7 +162,7 @@ Contains:
 
 ### Outlier Catalogue
 
-* `Result/Radius_outliers.csv`
+* `Results/Radius_outliers.csv`
 
 Contains all stars with $$|Z_{\mathrm{IR}}| \ge 1.96$$ along with detailed diagnostic information.
 
