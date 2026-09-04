@@ -2,6 +2,26 @@
 
 A numerical pipeline for estimating stellar radii from multi-band photometry, Gaia parallaxes, and bolometric corrections. The framework combines deterministic calculations with Monte Carlo uncertainty propagation to derive robust infrared-based radius estimates and to evaluate their statistical consistency against independent reference measurements.
 
+<p align="center">
+  <img src="docs/radius_comparison.png" alt="Infrared radii against reference values" width="70%">
+</p>
+
+<sub><b>Validation.</b> Final infrared radii $R_{\mathrm{IR}}$ against
+independent reference measurements $R_A$, with propagated uncertainties on both
+axes and the one-to-one relation. Agreement holds across the full range
+$0.5$–$3\,R_\odot$; the visible outliers are the ones the pipeline flags
+automatically.</sub>
+
+<p align="center">
+  <img src="docs/z_score.png" alt="Z-score distribution" width="49%">
+  <img src="docs/wasp001_multiband.png" alt="Per-band radius estimates for WASP-001" width="49%">
+</p>
+
+<sub><b>Left:</b> distribution of the z-scores used to test consistency with
+the reference catalogue. <b>Right:</b> per-band radius estimates for a single
+star (WASP-001), showing how the J, H and K measurements are combined into the
+final value.</sub>
+
 ---
 
 ## Scientific Motivation
