@@ -6,10 +6,10 @@ A numerical pipeline for estimating stellar radii from multi-band photometry, Ga
   <img src="docs/radius_comparison.png" alt="Infrared radii against reference values" width="70%">
 </p>
 
-<sub><b>Validation.</b> Final infrared radii $R_{\mathrm{IR}}$ against
-independent reference measurements $R_A$, with propagated uncertainties on both
+<sub><b>Validation.</b> Final infrared radii $`R_{\mathrm{IR}}`$ against
+independent reference measurements $`R_A`$, with propagated uncertainties on both
 axes and the one-to-one relation. Agreement holds across the full range
-$0.5$–$3\,R_\odot$; the visible outliers are the ones the pipeline flags
+0.5–3 $`R_\odot`$; the visible outliers are the ones the pipeline flags
 automatically.</sub>
 
 <p align="center">
@@ -57,23 +57,23 @@ The main goals of the project are to:
 The radius is derived from the relation between bolometric luminosity and effective temperature.
 
 ### Distance from Parallax
-$$
+```math
 d[\mathrm{pc}] = \frac{1}{\varpi[\mathrm{arcsec}]}
-$$
+```
 ### Absolute Bolometric Magnitude
-$$
+```math
 M_{\mathrm{bol}} = m + BC - 5\log_{10}(d) + 5
-$$
+```
 ### Stellar Radius
 
-$$
+```math
 \frac{R}{R_\odot}=\left(\frac{T_\odot}{T_{\mathrm{eff}}}\right)^2 10^{\frac{M_{\mathrm{bol},\odot}-M_{\mathrm{bol}}}{5}}
-$$
+```
 
 where:
 
-* $$(T_\odot = 5771.8\ \mathrm{K})$$
-* $$(M_{\mathrm{bol},\odot} = 4.75)$$
+* $`T_\odot = 5771.8\ \mathrm{K}`$
+* $`M_{\mathrm{bol},\odot} = 4.75`$
 
 ---
 
@@ -99,7 +99,7 @@ For each band, the pipeline:
 3. Calculates the stellar radius.
 4. Propagates uncertainties analytically using first-order error propagation.
 
-The resulting radii are combined through inverse-variance weighting to obtain a diagnostic estimate: $$R_{\mathrm{all,det}}$$. This estimate is used for internal consistency checks but is not considered the final result because the individual band estimates are statistically correlated through shared uncertainties in parallax and effective temperature.
+The resulting radii are combined through inverse-variance weighting to obtain a diagnostic estimate: $`R_{\mathrm{all,det}}`$. This estimate is used for internal consistency checks but is not considered the final result because the individual band estimates are statistically correlated through shared uncertainties in parallax and effective temperature.
 
 ---
 
@@ -132,17 +132,17 @@ This approach provides a statistically rigorous estimate that naturally incorpor
 
 ## Statistical Validation
 
-The estimated radius is compared with an external reference radius ($$R_A$$) using a Z-score:
+The estimated radius is compared with an external reference radius $`R_A`$ using a Z-score:
 
-$$
+```math
 Z = \frac{R_{\mathrm{IR}} - R_A}{\sqrt{\sigma_{\mathrm{IR}}^2 + \sigma_A^2}}
-$$
+```
 
 A result is considered statistically consistent when:
 
-$$
+```math
 |Z| < 1.96
-$$
+```
 
 corresponding to a two-sided 95% confidence interval under Gaussian assumptions.
 
@@ -155,10 +155,10 @@ Using a catalogue of 180 stars, the pipeline achieved:
   | Metric | Value |
   |--------|:------:|
   | Analysed stars | 180 |
-  | Deterministic multi-band success rate | 74.44% |
-  | Infrared Monte Carlo success rate | 87.78% |
-  | Median $$Z_{all_{det}}$$ | 1.141 |
-  | Median $$Z_{IR}$$ | 0.840 |
+  | Deterministic multi-band: consistent at 95 % ( $`\lvert Z \rvert \lt 1.96`$ ) | 74.44% |
+  | Infrared Monte Carlo: consistent at 95 % ( $`\lvert Z \rvert \lt 1.96`$ ) | 87.78% |
+  | Median $`Z_{\mathrm{all,det}}`$ | 1.141 |
+  | Median $`Z_{\mathrm{IR}}`$ | 0.840 |
   | Outliers after infrared analysis | 22 |
 
 These results demonstrate that the infrared Monte Carlo approach substantially improves agreement with independent reference radii.
@@ -184,7 +184,7 @@ Contains:
 
 * `Results/Radius_outliers.csv`
 
-Contains all stars with $$|Z_{\mathrm{IR}}| \ge 1.96$$ along with detailed diagnostic information.
+Contains all stars with $`|Z_{\mathrm{IR}}| \ge 1.96`$ along with detailed diagnostic information.
 
 ---
 
@@ -196,7 +196,7 @@ Contains all stars with $$|Z_{\mathrm{IR}}| \ge 1.96$$ along with detailed diagn
   Direct comparison between `R_IR` and `R_A`.
 
 * **Residual Analysis** (`Plots/Residuals_R_A_minus_R_IR.pdf`)
-  Residuals $$(R_A - R_{\mathrm{IR}})$$ with failed Z-tests highlighted.
+  Residuals $`(R_A - R_{\mathrm{IR}})`$ with failed Z-tests highlighted.
 
 * **Z-score Comparison** (`Plots/Z_score_comparison.pdf`)
   Comparison between deterministic and infrared statistical consistency.
